@@ -1,84 +1,34 @@
 import React from 'react';
-import Mains from '../assets/Mains/Banner.png';
 
-const HeroSection = () => {
-  const whatsappNumber = "919876543210"; // ← Change to your actual WhatsApp number
-
-  const openWhatsApp = (message = "") => {
-    const encodedMessage = encodeURIComponent(message);
-    const url = encodedMessage 
-      ? `https://wa.me/${whatsappNumber}?text=${encodedMessage}` 
-      : `https://wa.me/${whatsappNumber}`;
-    window.open(url, '_blank');
-  };
-
+export default function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-[#FCFAF7] px-8 py-20 overflow-hidden">
-
-      {/* Blurred Background Image */}
-      <div
-        className="absolute inset-0 bg-center bg-cover opacity-40 blur-xl scale-110"
-        style={{
-          backgroundImage: `url(${Mains})`,
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative max-w-3xl mx-auto text-center">
-
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-gray-200 rounded-full text-sm text-gray-700 bg-white shadow-sm">
-          <span>✨</span>
-          <span>Your wellness, simplified</span>
+    <section class="w-full bg-[#FAF9F6] py-20 px-8 md:px-16 lg:px-24 flex flex-col items-start justify-center min-h-[500px]">
+      <div class="max-w-2xl space-y-6">
+        
+        {/* Established Badge */}
+        <div class="inline-block border border-gray-300 rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider text-gray-800 bg-white/50">
+          Est. 1887 Paris, France
         </div>
 
         {/* Heading */}
-        <h1 className="text-6xl font-semibold text-gray-900 leading-tight mb-6">
-          Health & wellness, <br />
-          <span className="text-[#2E7D56]">
-            all in one place.
-          </span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif text-[#11161B] leading-[1.1] tracking-tight">
+          <span class="italic block font-normal">Tools for the</span>
+          <span class="font-normal block">Tactile Soul</span>
         </h1>
 
-        {/* Subtext */}
-        <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
-          From trusted pharmacies and premium supplements to modern fitness
-          clubs — Vivara connects you with everything you need to feel your best.
+        {/* Subtext / Description */}
+        <p class="text-lg md:text-xl text-[#525B65] font-light leading-relaxed max-w-lg pt-2">
+          Opening our drawer reveals a world of pure pigment, hand-pressed papers, and brushes that hold a century of history.
         </p>
 
-        {/* Buttons */}
-        <div className="flex items-center justify-center gap-4 mb-10">
-          {/* Primary Button */}
-          <button 
-            onClick={() => openWhatsApp("Hi, I'm interested in exploring wellness services.")}
-            className="flex items-center gap-2 px-6 py-3 bg-[#2E7D56] text-white rounded-full font-medium hover:bg-[#256a47] transition-all"
-          >
-            Explore wellness <span>→</span>
+        {/* Call to Action Button */}
+        <div class="pt-4">
+          <button class="bg-[#C58B2B] hover:bg-[#B07A22] text-white font-medium text-sm px-8 py-3.5 rounded shadow-sm transition-colors duration-200 tracking-wide">
+            Explore the Atelier
           </button>
-
-          {/* Secondary Button */}
-          <button 
-            onClick={() => openWhatsApp("Hi, I'm interested in becoming a partner with Vivara.")}
-            className="px-6 py-3 bg-[#F0EFE9] text-gray-800 rounded-full font-medium hover:bg-[#e4e2da] transition-all"
-          >
-            For partners
-          </button>
-        </div>
-
-        {/* Trust Indicator */}
-        <div className="flex items-center justify-center gap-3">
-          <div className="flex text-orange-400 text-xl">
-            ★★★★★
-          </div>
-
-          <span className="text-gray-600 font-medium">
-            Trusted by <span className="font-bold">2M+</span> members worldwide
-          </span>
         </div>
 
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

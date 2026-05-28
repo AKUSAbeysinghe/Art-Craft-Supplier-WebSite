@@ -1,51 +1,38 @@
-import React from 'react';
-
-const Navbar = () => {
-  const whatsappNumber = "919876543210"; // ← Change this to your WhatsApp number (with country code, no + or spaces)
-
-  const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/${whatsappNumber}`, '_blank');
-  };
-
+export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between px-8 py-4 bg-white shadow-sm">
-      {/* Logo Section */}
-      <div className="flex items-center gap-2">
-        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#2E7D56]">
-          <span className="text-white text-xl">🍃</span>
-        </div>
-        <span className="text-2xl font-semibold text-gray-900">Vivara</span>
+    <header className="w-full bg-[#FAF9F6] border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+      
+      <div className="text-2xl font-serif font-semibold italic text-gray-900 tracking-wide">
+        Sennelier & Son
       </div>
 
-      {/* Nav Links */}
-      <div className="flex items-center gap-8 text-gray-600 font-medium">
-        <a href="/" className="hover:text-[#2E7D56] transition-colors">
-          Home
-        </a>
-        <a href="/pharmacy" className="hover:text-[#2E7D56] transition-colors">
-          Pharmacy
-        </a>
-        <a href="/supplements" className="hover:text-[#2E7D56] transition-colors">
-          Supplements
-        </a>
-        <a href="/fitness" className="hover:text-[#2E7D56] transition-colors">
-          Fitness
-        </a>
-        <a href="/contact" className="hover:text-[#2E7D56] transition-colors">
-          Contact
-        </a>
-      </div>
+      <div className="flex items-center space-x-8">
 
-      {/* WhatsApp Button */}
-      <button
-        onClick={handleWhatsAppClick}
-        className="px-6 py-2 bg-[#2E7D56] text-white rounded-full font-semibold hover:bg-[#256a47] transition-all flex items-center gap-2"
-      >
-       Talk To Us
-         
-      </button>
-    </nav>
+        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium tracking-wider text-gray-600">
+          <a href="/Pigments" className="hover:text-gray-900 transition-colors uppercase">Pigments</a>
+          <a href="/brushes" className="hover:text-gray-900 transition-colors uppercase">Brushes</a>
+          <a href="/papers" className="hover:text-gray-900 transition-colors uppercase">Papers</a>
+          <a href="/archieve" className="hover:text-gray-900 transition-colors uppercase">Archive</a>
+        </nav>
+
+        <button className="flex items-center space-x-2 text-sm font-medium text-gray-800 hover:text-black transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.603 10.601Z" />
+          </svg>
+          <span>Search</span>
+        </button>
+
+        <a
+          href="#"
+          className="flex items-center space-x-2 bg-[#090B0E] hover:bg-gray-800 text-white px-5 py-2.5 rounded-full transition-colors text-sm font-medium"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+          </svg>
+          <span>Basket (0)</span>
+        </a>
+
+      </div>
+    </header>
   );
-};
-
-export default Navbar;
+}
