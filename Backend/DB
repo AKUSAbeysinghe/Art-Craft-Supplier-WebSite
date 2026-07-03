@@ -1,4 +1,12 @@
--- pharmacy_db
+-- ART_CRAFT_DB
+
+-- Create Database
+CREATE DATABASE IF NOT EXISTS ART_CRAFT_DB 
+    CHARACTER SET utf8mb4 
+    COLLATE utf8mb4_unicode_ci;
+
+-- Use the database
+USE ART_CRAFT_DB;
 
 -- 1. Categories Table
 CREATE TABLE IF NOT EXISTS categories (
@@ -7,7 +15,7 @@ CREATE TABLE IF NOT EXISTS categories (
     slug VARCHAR(100) UNIQUE,
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+); 
 
 -- 2. Subcategories Table
 CREATE TABLE IF NOT EXISTS subcategories (
@@ -36,7 +44,7 @@ CREATE TABLE IF NOT EXISTS products (
     FOREIGN KEY (sub_category_id) REFERENCES subcategories(id) ON DELETE CASCADE
 );
 
--- 4. Users Table (for Login & Signup)
+-- 4. Users Table
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
@@ -46,30 +54,55 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Insert Categories
-INSERT INTO categories (name, slug, description) VALUES
-('Pharmacy', 'pharmacy', 'Medicines and healthcare products'),
-('Supplements', 'supplements', 'Vitamins and nutritional supplements'),
-('Fitness', 'fitness', 'Fitness equipment and gear')
-ON DUPLICATE KEY UPDATE name=VALUES(name);
+-- =============================================
+-- INSERT CATEGORIES
+-- =============================================
+INSERT INTO categories (name, slug) VALUES
+('Papers', 'papers'),
+('Brushes', 'brushes'),
+('Pens', 'pens'),
+('Pigments', 'pigments')
+ON DUPLICATE KEY UPDATE 
+    name = VALUES(name),
+    slug = VALUES(slug);
 
--- Insert Subcategories
+-- =============================================
+-- INSERT SUBCATEGORIES
+-- =============================================
 INSERT INTO subcategories (category_id, name, slug, description) VALUES
--- Pharmacy
-(1, 'Prescription Medicines', 'prescriptions', 'Doctor prescribed medicines'),
-(1, 'Everyday Health Essentials', 'otc-medicine', 'OTC medicines and daily care'),
-(1, 'Vaccines & Wellness Care', 'vaccines-wellness', 'Vaccinations and wellness products'),
+-- Papers (category 1)
+(1, 'Drawing Papers', 'drawing-papers', NULL),
+(1, 'Painting Papers', 'painting-papers', NULL),
+(1, 'Craft Papers', 'craft-papers', NULL),
+(1, 'Cardstock & Specialty Papers', 'cardstock-specialty-papers', NULL),
+(1, 'Printing & Photo Papers', 'printing-photo-papers', NULL),
 
--- Supplements
-(2, 'Vitamins & Minerals', 'vitamins-minerals', 'Daily vitamins and minerals'),
-(2, 'Immunity & Energy', 'immunity-energy', 'Boost immunity and energy'),
-(2, 'Sports Nutrition', 'sports-nutrition', 'Protein and performance supplements'),
-(2, 'Herbal Wellness', 'herbal-wellness', 'Ayurvedic and herbal products'),
+-- Brushes (category 2)
+(2, 'Paint Brushes', 'paint-brushes', NULL),
+(2, 'Watercolor Brushes', 'watercolor-brushes', NULL),
+(2, 'Acrylic & Oil Brushes', 'acrylic-oil-brushes', NULL),
+(2, 'Craft & Decorative Brushes', 'craft-decorative-brushes', NULL),
+(2, 'Specialty Brushes', 'specialty-brushes', NULL),
 
--- Fitness
-(3, 'Cardio Equipment', 'cardio-equipment', 'Treadmills and cardio machines'),
-(3, 'Strength Training', 'strength-training', 'Weights and strength gear'),
-(3, 'Accessories & Recovery', 'accessories-recovery', 'Yoga mats and recovery tools')
-ON DUPLICATE KEY UPDATE name=VALUES(name);
+-- Pens (category 3)
+(3, 'Drawing Pens', 'drawing-pens', NULL),
+(3, 'Fineliner Pens', 'fineliner-pens', NULL),
+(3, 'Brush Pens', 'brush-pens', NULL),
+(3, 'Calligraphy Pens', 'calligraphy-pens', NULL),
+(3, 'Paint Pens', 'paint-pens', NULL),
+(3, 'Metallic Pens', 'metallic-pens', NULL),
+
+-- Pigments (category 4)
+(4, 'Watercolor Pigments', 'watercolor-pigments', NULL),
+(4, 'Acrylic Pigments', 'acrylic-pigments', NULL),
+(4, 'Oil Pigments', 'oil-pigments', NULL),
+(4, 'Natural Earth Pigments', 'natural-earth-pigments', NULL),
+(4, 'Metallic Pigments', 'metallic-pigments', NULL),
+(4, 'Mica Pigments', 'mica-pigments', NULL),
+(4, 'Fluorescent Pigments', 'fluorescent-pigments', NULL)
+ON DUPLICATE KEY UPDATE 
+    name = VALUES(name),
+    slug = VALUES(slug);
+
 
 

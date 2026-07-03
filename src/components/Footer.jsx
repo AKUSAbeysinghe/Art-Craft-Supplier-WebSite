@@ -4,17 +4,17 @@ export default function SiteFooter() {
   const currentYearRoman = 'MMXXIV'; // Matches the image's "MMXXIV" (2024)
 
   const shopLinks = [
-    { label: 'The Pigment Wall', href: '#' },
-    { label: 'Brushes & Pens', href: '#' },
-    { label: 'Paper Archives', href: '#' },
-    { label: 'Studio Basics', href: '#' },
+    { label: 'The Pigment Wall', href: '/colors' },
+    { label: 'Brushes ', href: '/brushes' },
+    { label: 'Papers', href: '/papers' },
+    { label: 'Pens', href: '/pens' },
   ];
 
   const archiveLinks = [
-    { label: 'Our History', href: '#' },
-    { label: 'Pigment Map', href: '#' },
-    { label: 'Journal', href: '#' },
-    { label: 'Techniques', href: '#' },
+    { label: 'Our History', href: '/history' },
+    { label: 'Pigment Map', href: '/pigmentsMap' },
+    { label: 'Studio Basics', href: '/Studio Basics' },
+    { label: 'Techniques', href: '/techniques' },
   ];
 
   return (

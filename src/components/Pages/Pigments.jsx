@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from "react";
-import PaperBannerImage from "../../assets/Papers/PaperBanner.jpg";
+import PigmentBanner from "../../assets/Mains/Colours.jpg";
 
-const Papers = () => {
-  const [allPapers, setAllPapers] = useState([]);
-  const [filteredPapers, setFilteredPapers] = useState([]);
+const Pigments = () => {
+  const [allPigments, setAllPigments] = useState([]);
+  const [filteredPigments, setFilteredPigments] = useState([]);
   const [activeFilter, setActiveFilter] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
   const WHATSAPP_NUMBER = '94771234567';
 
-  // Subcategory IDs for Papers (Category 1)
+  // Subcategory IDs for Pigments (Category 4)
   const SUBCATEGORY_IDS = {
     ALL: "all",
-    DRAWING: 1,           // Drawing Papers
-    PAINTING: 2,          // Painting Papers
-    CRAFT: 3,             // Craft Papers
-    CARDSTOCK: 4,         // Cardstock & Specialty Papers
-    PRINTING: 5,          // Printing & Photo Papers
+    WATERCOLOR: 16,
+    ACRYLIC: 17,
+    OIL: 18,
+    NATURAL_EARTH: 19,
+    METALLIC: 20,
+    MICA: 21,
+    FLUORESCENT: 22,
   };
 
-  const fetchPapers = async () => {
+  const fetchPigments = async () => {
     setIsLoading(true);
     setError("");
 
@@ -29,11 +31,11 @@ const Papers = () => {
       const data = await res.json();
 
       if (data.success && Array.isArray(data.data)) {
-        const paperItems = data.data.filter(item => Number(item.category_id) === 1);
-        setAllPapers(paperItems);
-        setFilteredPapers(paperItems);
+        const pigmentItems = data.data.filter(item => Number(item.category_id) === 4);
+        setAllPigments(pigmentItems);
+        setFilteredPigments(pigmentItems);
       } else {
-        setError("Failed to load papers");
+        setError("Failed to load pigments");
       }
     } catch (err) {
       console.error(err);
@@ -44,19 +46,19 @@ const Papers = () => {
   };
 
   useEffect(() => {
-    fetchPapers();
+    fetchPigments();
   }, []);
 
   useEffect(() => {
     if (activeFilter === "all") {
-      setFilteredPapers(allPapers);
+      setFilteredPigments(allPigments);
     } else {
-      const filtered = allPapers.filter(
+      const filtered = allPigments.filter(
         item => Number(item.sub_category_id) === activeFilter
       );
-      setFilteredPapers(filtered);
+      setFilteredPigments(filtered);
     }
-  }, [activeFilter, allPapers]);
+  }, [activeFilter, allPigments]);
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("en-LK").format(price);
@@ -74,25 +76,27 @@ const Papers = () => {
       <div className="p-8 md:p-16">
         <header className="max-w-5xl mx-auto mb-12">
           <p className="text-xs font-semibold tracking-widest text-zinc-400 uppercase mb-3">
-            Surfaces
+            Colors
           </p>
           <h1 className="text-5xl md:text-6xl font-serif italic font-medium tracking-tight mb-6">
-            Fine Papers
+            Premium Pigments
           </h1>
           <p className="text-lg text-zinc-600 max-w-xl leading-relaxed">
-            Premium papers crafted for artists, designers, and creators who demand the finest surface for their work.
+            Pure, vibrant, and lightfast pigments for watercolor, acrylic, oil, and mixed media artists.
           </p>
         </header>
 
         {/* Filters */}
         <div className="max-w-5xl mx-auto mb-10 flex flex-wrap gap-3">
           {[
-            { label: "All Papers", value: "all" },
-            { label: "Drawing Papers", value: SUBCATEGORY_IDS.DRAWING },
-            { label: "Painting Papers", value: SUBCATEGORY_IDS.PAINTING },
-            { label: "Craft Papers", value: SUBCATEGORY_IDS.CRAFT },
-            { label: "Cardstock & Specialty", value: SUBCATEGORY_IDS.CARDSTOCK },
-            { label: "Printing & Photo", value: SUBCATEGORY_IDS.PRINTING },
+            { label: "All Pigments", value: "all" },
+            { label: "Watercolor", value: SUBCATEGORY_IDS.WATERCOLOR },
+            { label: "Acrylic", value: SUBCATEGORY_IDS.ACRYLIC },
+            { label: "Oil", value: SUBCATEGORY_IDS.OIL },
+            { label: "Natural Earth", value: SUBCATEGORY_IDS.NATURAL_EARTH },
+            { label: "Metallic", value: SUBCATEGORY_IDS.METALLIC },
+            { label: "Mica", value: SUBCATEGORY_IDS.MICA },
+            { label: "Fluorescent", value: SUBCATEGORY_IDS.FLUORESCENT },
           ].map((filter) => (
             <button
               key={filter.value}
@@ -111,32 +115,32 @@ const Papers = () => {
         {/* Products Grid with Exact Images */}
         <main className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {isLoading ? (
-            <p className="col-span-2 text-center py-20 text-zinc-500">Loading fine papers...</p>
+            <p className="col-span-2 text-center py-20 text-zinc-500">Loading premium pigments...</p>
           ) : error ? (
             <p className="col-span-2 text-center py-12 text-red-600">{error}</p>
-          ) : filteredPapers.length === 0 ? (
-            <p className="col-span-2 text-center py-20 text-zinc-500">No papers found in this category.</p>
+          ) : filteredPigments.length === 0 ? (
+            <p className="col-span-2 text-center py-20 text-zinc-500">No pigments found in this category.</p>
           ) : (
-            filteredPapers.map((paper) => (
+            filteredPigments.map((pigment) => (
               <div
-                key={paper.id}
+                key={pigment.id}
                 className="bg-white border border-zinc-100 shadow-sm overflow-hidden group hover:shadow-xl transition-all duration-300"
               >
                 {/* Product Image */}
                 <div className="relative h-80 bg-stone-100 overflow-hidden">
                   <img
                     src={
-                      paper.image_url
-                        ? `http://localhost/ART_CRAFT_DB/${paper.image_url}`
-                        : "https://via.placeholder.com/600x400?text=Paper"
+                      pigment.image_url
+                        ? `http://localhost/ART_CRAFT_DB/${pigment.image_url}`
+                        : "https://via.placeholder.com/600x400?text=Pigment"
                     }
-                    alt={paper.name}
+                    alt={pigment.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
-                      e.target.src = "https://via.placeholder.com/600x400?text=Paper";
+                      e.target.src = "https://via.placeholder.com/600x400?text=Pigment";
                     }}
                   />
-                  {paper.popular === "1" && (
+                  {pigment.popular === "1" && (
                     <div className="absolute top-4 right-4 bg-amber-600 text-white text-xs font-bold px-4 py-1 rounded-full">
                       Popular
                     </div>
@@ -147,31 +151,31 @@ const Papers = () => {
                 <div className="p-8">
                   <div className="flex justify-between items-start mb-4">
                     <p className="text-xs font-bold tracking-widest text-zinc-400 uppercase">
-                      {paper.sub_category_name || "Paper"}
+                      {pigment.sub_category_name || "Pigment"}
                     </p>
                     <span className="text-2xl font-semibold text-zinc-900">
-                      Rs. {formatPrice(paper.price)}
+                      Rs. {formatPrice(pigment.price)}
                     </span>
                   </div>
 
                   <h2 className="text-2xl font-serif italic font-medium text-zinc-900 mb-4 leading-tight">
-                    {paper.name}
+                    {pigment.name}
                   </h2>
 
-                  {paper.description && (
+                  {pigment.description && (
                     <p className="text-zinc-600 text-[15px] leading-relaxed mb-6 line-clamp-3">
-                      {paper.description}
+                      {pigment.description}
                     </p>
                   )}
 
                   <div className="flex items-center justify-between text-sm mb-6">
                     <span className="text-emerald-700 font-medium">
-                      In Stock: {paper.stock}
+                      In Stock: {pigment.stock}
                     </span>
                   </div>
 
                   <button
-                    onClick={() => handleWhatsAppClick(paper)}
+                    onClick={() => handleWhatsAppClick(pigment)}
                     className="w-full bg-zinc-900 hover:bg-black text-white py-4 rounded font-medium transition-colors"
                   >
                     Inquire via WhatsApp
@@ -188,41 +192,41 @@ const Papers = () => {
         <div className="bg-[#eae8e4] p-4 sm:p-6 md:p-8 rounded-sm shadow-sm">
           <div className="overflow-hidden rounded-sm bg-stone-100">
             <img
-              src={PaperBannerImage}
-              alt="Fine artist papers"
+              src={PigmentBanner}
+              alt="Premium artist pigments"
               className="w-full h-auto object-cover max-h-[620px] transition-transform duration-500 hover:scale-[1.02]"
             />
           </div>
         </div>
       </div>
 
-      {/* ==================== THE ART OF PAPER SECTION ==================== */}
+      {/* ==================== THE ART OF PIGMENTS SECTION ==================== */}
       <section className="bg-[#eae8e1] text-[#2d2c2a] px-6 py-20 md:py-28">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs font-semibold tracking-[0.2em] text-stone-500 uppercase mb-4">
-            QUALITY &amp; HERITAGE
+            COLOR &amp; PURITY
           </p>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic font-medium tracking-tight mb-8">
-            The Soul of Paper
+            The Essence of Color
           </h2>
           
           <p className="text-base md:text-lg text-stone-700 leading-relaxed max-w-3xl mx-auto mb-12">
-            From smooth hot-pressed surfaces to textured cold-pressed papers, each sheet is chosen for its ability to enhance your artistic vision.
+            From rich earth tones to brilliant metallics and shimmering micas — each pigment is selected for its intensity, lightfastness, and artistic potential.
           </p>
 
           <div className="flex flex-wrap justify-center gap-x-16 gap-y-10">
             <div>
-              <div className="text-5xl font-serif italic text-[#c59b4e]">300+</div>
-              <div className="text-sm tracking-widest text-stone-500 mt-2">GSM OPTIONS</div>
-            </div>
-            <div>
-              <div className="text-5xl font-serif italic text-[#c59b4e]">8</div>
-              <div className="text-sm tracking-widest text-stone-500 mt-2">TEXTURE VARIETIES</div>
+              <div className="text-5xl font-serif italic text-[#c59b4e]">7</div>
+              <div className="text-sm tracking-widest text-stone-500 mt-2">CATEGORIES</div>
             </div>
             <div>
               <div className="text-5xl font-serif italic text-[#c59b4e]">100%</div>
-              <div className="text-sm tracking-widest text-stone-500 mt-2">ARCHIVAL QUALITY</div>
+              <div className="text-sm tracking-widest text-stone-500 mt-2">PURE PIGMENT</div>
+            </div>
+            <div>
+              <div className="text-5xl font-serif italic text-[#c59b4e]">LIGHTFAST</div>
+              <div className="text-sm tracking-widest text-stone-500 mt-2">PROFESSIONAL GRADE</div>
             </div>
           </div>
         </div>
@@ -231,4 +235,4 @@ const Papers = () => {
   );
 };
 
-export default Papers;
+export default Pigments;

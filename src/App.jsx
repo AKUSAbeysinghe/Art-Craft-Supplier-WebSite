@@ -9,10 +9,14 @@ import TermsOfService from "./components/Pages/Terms.jsx";
 import FAQ from "./components/Pages/FAQ.jsx";
 import Contact from "./components/Pages/Contact.jsx";
 
-import PigmentationPage from "./components/Pages/Pigmentation.jsx";
+
+import Pigments from "./components/Pages/Pigments.jsx";
+import PigmentationPage from "./components/Pages/Colours.jsx";
 import BrushesPage from "./components/Pages/Brushes.jsx";
 import Paperspage from "./components/Pages/Papers.jsx";
+import Pens from "./components/Pages/Pens.jsx";
 import ArchivePage from "./components/Pages/Archive.jsx";
+
 
 // Admin Pages
 import Login from "./Admin/Login.jsx";
@@ -66,14 +70,31 @@ function App() {
         {/* Customer Pages */}
         <Route path="/" element={<Layout><Home /></Layout>} />
 
-        <Route
-          path="/Pigments"
+
+
+
+
+         <Route
+          path="/colors"
           element={
             <Layout>
               <PigmentationPage />
             </Layout>
           }
         />
+
+        <Route
+          path="/Pigments"
+          element={
+            <Layout>
+              <Pigments />
+            </Layout>
+          }
+        />
+  
+     
+      
+
 
         <Route
           path="/Brushes"
@@ -89,6 +110,17 @@ function App() {
           element={
             <Layout>
               <Paperspage />
+            </Layout>
+          }
+        />
+
+
+
+        <Route
+          path="/pens"
+          element={
+            <Layout>
+              <Pens />
             </Layout>
           }
         />

@@ -35,7 +35,7 @@ const AdminPanel = () => {
   // Fetch Categories
   const fetchCategories = async () => {
     try {
-      const res = await fetch("http://localhost/pharmacy-project/api/get_categories.php");
+      const res = await fetch("http://localhost/ART_CRAFT_DB/api/get_categories.php");
       const data = await res.json();
 
       if (data.success && data.data) {
@@ -56,7 +56,7 @@ const AdminPanel = () => {
     if (!categoryId) return;
     try {
       const res = await fetch(
-        `http://localhost/pharmacy-project/api/get_subcategories.php?category_id=${categoryId}`
+        `http://localhost/ART_CRAFT_DB/api/get_subcategories.php?category_id=${categoryId}`
       );
       const data = await res.json();
       if (data.success) {
@@ -73,7 +73,7 @@ const AdminPanel = () => {
   // Fetch Products
   const fetchProducts = async () => {
     try {
-      const res = await fetch("http://localhost/pharmacy-project/api/get_products.php");
+      const res = await fetch("http://localhost/ART_CRAFT_DB/api/get_products.php");
       const data = await res.json();
       if (data.success) setProducts(data.data || []);
     } catch (err) {
@@ -126,8 +126,8 @@ const AdminPanel = () => {
 
     try {
       const url = isEditing
-        ? "http://localhost/pharmacy-project/api/update_product.php"
-        : "http://localhost/pharmacy-project/api/add_product.php";
+        ? "http://localhost/ART_CRAFT_DB/api/update_product.php"
+        : "http://localhost/ART_CRAFT_DB/api/add_product.php";
 
       const res = await fetch(url, { method: "POST", body: formDataToSend });
       const result = await res.json();
@@ -187,7 +187,7 @@ const AdminPanel = () => {
   const handleDelete = async () => {
     if (!itemToDelete) return;
     try {
-      const res = await fetch("http://localhost/pharmacy-project/api/delete_product.php", {
+      const res = await fetch("http://localhost/ART_CRAFT_DB/api/delete_product.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `id=${itemToDelete}`,
@@ -262,7 +262,7 @@ const AdminPanel = () => {
                       <img
                         src={
                           product.image_url
-                            ? `http://localhost/pharmacy-project/${product.image_url}`
+                            ? `http://localhost/ART_CRAFT_DB/${product.image_url}`
                             : "https://via.placeholder.com/80x80?text=No+Image"
                         }
                         alt={product.name}

@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from "react";
-import PaperBannerImage from "../../assets/Papers/PaperBanner.jpg";
+import PensBanner from "../../assets/Mains/Pens.jpg";
 
-const Papers = () => {
-  const [allPapers, setAllPapers] = useState([]);
-  const [filteredPapers, setFilteredPapers] = useState([]);
+const Pens = () => {
+  const [allPens, setAllPens] = useState([]);
+  const [filteredPens, setFilteredPens] = useState([]);
   const [activeFilter, setActiveFilter] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
   const WHATSAPP_NUMBER = '94771234567';
 
-  // Subcategory IDs for Papers (Category 1)
+  // Subcategory IDs for Pens (Category 3)
   const SUBCATEGORY_IDS = {
     ALL: "all",
-    DRAWING: 1,           // Drawing Papers
-    PAINTING: 2,          // Painting Papers
-    CRAFT: 3,             // Craft Papers
-    CARDSTOCK: 4,         // Cardstock & Specialty Papers
-    PRINTING: 5,          // Printing & Photo Papers
+    DRAWING: 11,          // Drawing Pens
+    FINELINER: 12,        // Fineliner Pens
+    BRUSH: 13,            // Brush Pens
+    CALLIGRAPHY: 14,      // Calligraphy Pens
+    PAINT: 15,            // Paint Pens
+    METALLIC: 16,         // Metallic Pens
   };
 
-  const fetchPapers = async () => {
+  const fetchPens = async () => {
     setIsLoading(true);
     setError("");
 
@@ -29,11 +30,11 @@ const Papers = () => {
       const data = await res.json();
 
       if (data.success && Array.isArray(data.data)) {
-        const paperItems = data.data.filter(item => Number(item.category_id) === 1);
-        setAllPapers(paperItems);
-        setFilteredPapers(paperItems);
+        const penItems = data.data.filter(item => Number(item.category_id) === 3);
+        setAllPens(penItems);
+        setFilteredPens(penItems);
       } else {
-        setError("Failed to load papers");
+        setError("Failed to load pens");
       }
     } catch (err) {
       console.error(err);
@@ -44,19 +45,19 @@ const Papers = () => {
   };
 
   useEffect(() => {
-    fetchPapers();
+    fetchPens();
   }, []);
 
   useEffect(() => {
     if (activeFilter === "all") {
-      setFilteredPapers(allPapers);
+      setFilteredPens(allPens);
     } else {
-      const filtered = allPapers.filter(
+      const filtered = allPens.filter(
         item => Number(item.sub_category_id) === activeFilter
       );
-      setFilteredPapers(filtered);
+      setFilteredPens(filtered);
     }
-  }, [activeFilter, allPapers]);
+  }, [activeFilter, allPens]);
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("en-LK").format(price);
@@ -74,25 +75,26 @@ const Papers = () => {
       <div className="p-8 md:p-16">
         <header className="max-w-5xl mx-auto mb-12">
           <p className="text-xs font-semibold tracking-widest text-zinc-400 uppercase mb-3">
-            Surfaces
+            Instruments
           </p>
           <h1 className="text-5xl md:text-6xl font-serif italic font-medium tracking-tight mb-6">
-            Fine Papers
+            Fine Pens
           </h1>
           <p className="text-lg text-zinc-600 max-w-xl leading-relaxed">
-            Premium papers crafted for artists, designers, and creators who demand the finest surface for their work.
+            Precision tools for artists, illustrators, and calligraphers. From smooth fineliners to expressive brush pens.
           </p>
         </header>
 
         {/* Filters */}
         <div className="max-w-5xl mx-auto mb-10 flex flex-wrap gap-3">
           {[
-            { label: "All Papers", value: "all" },
-            { label: "Drawing Papers", value: SUBCATEGORY_IDS.DRAWING },
-            { label: "Painting Papers", value: SUBCATEGORY_IDS.PAINTING },
-            { label: "Craft Papers", value: SUBCATEGORY_IDS.CRAFT },
-            { label: "Cardstock & Specialty", value: SUBCATEGORY_IDS.CARDSTOCK },
-            { label: "Printing & Photo", value: SUBCATEGORY_IDS.PRINTING },
+            { label: "All Pens", value: "all" },
+            { label: "Drawing Pens", value: SUBCATEGORY_IDS.DRAWING },
+            { label: "Fineliner Pens", value: SUBCATEGORY_IDS.FINELINER },
+            { label: "Brush Pens", value: SUBCATEGORY_IDS.BRUSH },
+            { label: "Calligraphy Pens", value: SUBCATEGORY_IDS.CALLIGRAPHY },
+            { label: "Paint Pens", value: SUBCATEGORY_IDS.PAINT },
+            { label: "Metallic Pens", value: SUBCATEGORY_IDS.METALLIC },
           ].map((filter) => (
             <button
               key={filter.value}
@@ -111,32 +113,32 @@ const Papers = () => {
         {/* Products Grid with Exact Images */}
         <main className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {isLoading ? (
-            <p className="col-span-2 text-center py-20 text-zinc-500">Loading fine papers...</p>
+            <p className="col-span-2 text-center py-20 text-zinc-500">Loading fine pens...</p>
           ) : error ? (
             <p className="col-span-2 text-center py-12 text-red-600">{error}</p>
-          ) : filteredPapers.length === 0 ? (
-            <p className="col-span-2 text-center py-20 text-zinc-500">No papers found in this category.</p>
+          ) : filteredPens.length === 0 ? (
+            <p className="col-span-2 text-center py-20 text-zinc-500">No pens found in this category.</p>
           ) : (
-            filteredPapers.map((paper) => (
+            filteredPens.map((pen) => (
               <div
-                key={paper.id}
+                key={pen.id}
                 className="bg-white border border-zinc-100 shadow-sm overflow-hidden group hover:shadow-xl transition-all duration-300"
               >
                 {/* Product Image */}
                 <div className="relative h-80 bg-stone-100 overflow-hidden">
                   <img
                     src={
-                      paper.image_url
-                        ? `http://localhost/ART_CRAFT_DB/${paper.image_url}`
-                        : "https://via.placeholder.com/600x400?text=Paper"
+                      pen.image_url
+                        ? `http://localhost/ART_CRAFT_DB/${pen.image_url}`
+                        : "https://via.placeholder.com/600x400?text=Pen"
                     }
-                    alt={paper.name}
+                    alt={pen.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
-                      e.target.src = "https://via.placeholder.com/600x400?text=Paper";
+                      e.target.src = "https://via.placeholder.com/600x400?text=Pen";
                     }}
                   />
-                  {paper.popular === "1" && (
+                  {pen.popular === "1" && (
                     <div className="absolute top-4 right-4 bg-amber-600 text-white text-xs font-bold px-4 py-1 rounded-full">
                       Popular
                     </div>
@@ -147,31 +149,31 @@ const Papers = () => {
                 <div className="p-8">
                   <div className="flex justify-between items-start mb-4">
                     <p className="text-xs font-bold tracking-widest text-zinc-400 uppercase">
-                      {paper.sub_category_name || "Paper"}
+                      {pen.sub_category_name || "Pen"}
                     </p>
                     <span className="text-2xl font-semibold text-zinc-900">
-                      Rs. {formatPrice(paper.price)}
+                      Rs. {formatPrice(pen.price)}
                     </span>
                   </div>
 
                   <h2 className="text-2xl font-serif italic font-medium text-zinc-900 mb-4 leading-tight">
-                    {paper.name}
+                    {pen.name}
                   </h2>
 
-                  {paper.description && (
+                  {pen.description && (
                     <p className="text-zinc-600 text-[15px] leading-relaxed mb-6 line-clamp-3">
-                      {paper.description}
+                      {pen.description}
                     </p>
                   )}
 
                   <div className="flex items-center justify-between text-sm mb-6">
                     <span className="text-emerald-700 font-medium">
-                      In Stock: {paper.stock}
+                      In Stock: {pen.stock}
                     </span>
                   </div>
 
                   <button
-                    onClick={() => handleWhatsAppClick(paper)}
+                    onClick={() => handleWhatsAppClick(pen)}
                     className="w-full bg-zinc-900 hover:bg-black text-white py-4 rounded font-medium transition-colors"
                   >
                     Inquire via WhatsApp
@@ -188,41 +190,41 @@ const Papers = () => {
         <div className="bg-[#eae8e4] p-4 sm:p-6 md:p-8 rounded-sm shadow-sm">
           <div className="overflow-hidden rounded-sm bg-stone-100">
             <img
-              src={PaperBannerImage}
-              alt="Fine artist papers"
+              src={PensBanner}
+              alt="Fine artist pens"
               className="w-full h-auto object-cover max-h-[620px] transition-transform duration-500 hover:scale-[1.02]"
             />
           </div>
         </div>
       </div>
 
-      {/* ==================== THE ART OF PAPER SECTION ==================== */}
+      {/* ==================== THE ART OF PEN SECTION ==================== */}
       <section className="bg-[#eae8e1] text-[#2d2c2a] px-6 py-20 md:py-28">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs font-semibold tracking-[0.2em] text-stone-500 uppercase mb-4">
-            QUALITY &amp; HERITAGE
+            PRECISION &amp; EXPRESSION
           </p>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic font-medium tracking-tight mb-8">
-            The Soul of Paper
+            The Art of the Pen
           </h2>
           
           <p className="text-base md:text-lg text-stone-700 leading-relaxed max-w-3xl mx-auto mb-12">
-            From smooth hot-pressed surfaces to textured cold-pressed papers, each sheet is chosen for its ability to enhance your artistic vision.
+            Every stroke tells a story. Our collection brings together the finest drawing, calligraphy, and brush pens for artists who value control and beauty in every line.
           </p>
 
           <div className="flex flex-wrap justify-center gap-x-16 gap-y-10">
             <div>
-              <div className="text-5xl font-serif italic text-[#c59b4e]">300+</div>
-              <div className="text-sm tracking-widest text-stone-500 mt-2">GSM OPTIONS</div>
+              <div className="text-5xl font-serif italic text-[#c59b4e]">0.05</div>
+              <div className="text-sm tracking-widest text-stone-500 mt-2">MM TIP PRECISION</div>
             </div>
             <div>
-              <div className="text-5xl font-serif italic text-[#c59b4e]">8</div>
-              <div className="text-sm tracking-widest text-stone-500 mt-2">TEXTURE VARIETIES</div>
+              <div className="text-5xl font-serif italic text-[#c59b4e]">6</div>
+              <div className="text-sm tracking-widest text-stone-500 mt-2">SPECIALTY TYPES</div>
             </div>
             <div>
               <div className="text-5xl font-serif italic text-[#c59b4e]">100%</div>
-              <div className="text-sm tracking-widest text-stone-500 mt-2">ARCHIVAL QUALITY</div>
+              <div className="text-sm tracking-widest text-stone-500 mt-2">ARCHIVAL INK</div>
             </div>
           </div>
         </div>
@@ -231,4 +233,4 @@ const Papers = () => {
   );
 };
 
-export default Papers;
+export default Pens;

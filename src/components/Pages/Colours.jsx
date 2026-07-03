@@ -115,23 +115,20 @@ const PigmentCollectionPage = () => {
         </div>
       </section>
 
-      {/* 2. All Pigments Grid - Modified to 3 per row */}
+      {/* 2. All Pigments Grid */}
       <section className="bg-[#FAF9F6] p-8 md:p-16">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-serif italic text-center mb-12 text-[#09090b]">
             Our Pigment Collection
           </h2>
-         
+        
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {allPigments.map((pigment, index) => (
               <div
                 key={index}
                 className="flex flex-col group cursor-pointer hover:scale-[1.02] transition-all duration-300"
               >
-                {/* Color Block */}
                 <div className={`w-full aspect-square ${pigment.colorBg} transition-opacity duration-300 group-hover:opacity-95 rounded-sm shadow-sm`} />
-               
-                {/* Product Details */}
                 <div className="mt-5 font-sans text-left">
                   <h3 className="text-xl font-semibold text-[#09090b] mb-1">
                     {pigment.name}
@@ -151,36 +148,37 @@ const PigmentCollectionPage = () => {
         </div>
       </section>
 
-      {/* 3. Featured Pencil Set */}
+      {/* 3. Featured Pencil Set - Full Width + Full Color */}
       <section className="bg-[#FAF9F6] py-12">
-        <div className="max-w-md mx-auto px-6">
-          <div className="bg-white border border-[#e4e4e7] p-6 rounded-sm shadow-sm transition-all duration-300 hover:shadow-md group">
-            {/* Product Image */}
-            <div className="w-full aspect-[4/3] bg-[#f4f4f5] overflow-hidden relative mb-6 rounded-sm">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
+          <div className="bg-white border border-[#e4e4e7] p-6 md:p-8 rounded-sm shadow-sm">
+            {/* Full Width Image - Full Color */}
+            <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-[#f4f4f5] overflow-hidden relative mb-8 rounded-sm">
               <img
                 src={pencilSet.imageUrl}
                 alt={pencilSet.name}
-                className="w-full h-full object-cover grayscale brightness-95 contrast-105 transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
             </div>
+
             {/* Product Info */}
-            <div className="text-left">
+            <div className="max-w-2xl mx-auto text-left">
               <span className="text-xs uppercase tracking-[0.15em] text-[#71717a] font-medium block mb-1">
                 {pencilSet.series}
               </span>
-              <h3 className="text-2xl font-serif font-normal italic text-[#09090b] mb-3">
+              <h3 className="text-3xl font-serif font-normal italic text-[#09090b] mb-4">
                 {pencilSet.name}
               </h3>
-              <p className="text-sm text-[#4b5563] leading-relaxed mb-6 font-light">
+              <p className="text-base text-[#4b5563] leading-relaxed mb-8 font-light">
                 {pencilSet.description}
               </p>
-              <hr className="border-[#e4e4e7] my-4" />
-              <div className="flex items-center justify-between text-sm">
+              <hr className="border-[#e4e4e7] my-6" />
+              <div className="flex items-center justify-between text-lg">
                 <p className="text-[#71717a]">
                   Contains: <span className="text-[#09090b] font-medium">{pencilSet.quantity}</span>
                 </p>
-                <p className="font-bold text-[#09090b] text-base">
+                <p className="font-bold text-[#09090b]">
                   {pencilSet.price}
                 </p>
               </div>

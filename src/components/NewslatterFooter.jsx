@@ -2,11 +2,30 @@ import React, { useState } from 'react';
 
 export default function NewsletterFooter() {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
-    console.log('Signed up with:', email);
+    
+    if (!email) return;
+
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      // Simulate API call (replace with real backend endpoint later)
+      await new Promise(resolve => setTimeout(resolve, 1200));
+
+      // Simulate success (you can replace this with real fetch/axios call)
+      setStatus('success');
+      setMessage('Thank you! You’re now part of the circle.');
+      setEmail(''); // Clear the input
+
+    } catch (err) {
+      setStatus('error');
+      setMessage('Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -31,25 +50,37 @@ export default function NewsletterFooter() {
 
           {/* Newsletter Form */}
           <form onSubmit={handleSubmit} className="pt-6 relative flex items-end border-b border-gray-600 focus-within:border-gray-400 transition-colors pb-1">
+            
             <input 
               type="email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email" 
               required
-              className="w-full bg-transparent text-white placeholder-gray-500 text-sm focus:outline-none pr-20 py-1 font-light tracking-wide"
+              disabled={status === 'loading' || status === 'success'}
+              className="w-full bg-transparent text-white placeholder-gray-500 text-sm focus:outline-none pr-20 py-1 font-light tracking-wide disabled:opacity-50"
             />
+
             <button 
               type="submit" 
-              className="absolute right-0 bottom-1 text-xs font-bold tracking-widest text-gray-300 hover:text-white uppercase transition-colors duration-200"
+              disabled={status === 'loading' || status === 'success' || !email}
+              className="absolute right-0 bottom-1 text-xs font-bold tracking-widest text-gray-300 hover:text-white uppercase transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Sign Up
+              {status === 'loading' ? 'SUBSCRIBING...' : 'Sign Up'}
             </button>
           </form>
 
+          {/* Status Messages */}
+          {message && (
+            <p className={`text-sm pt-2 transition-all ${
+              status === 'success' ? 'text-emerald-400' : 'text-red-400'
+            }`}>
+              {message}
+            </p>
+          )}
+
         </div>
       </div>
-
     </section>
   );
 }
