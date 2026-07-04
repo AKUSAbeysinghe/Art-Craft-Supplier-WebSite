@@ -1,6 +1,8 @@
 import React from "react";
 
 const Techniques = () => {
+  const WHATSAPP_NUMBER = '94771234567';
+
   return (
     <div className="bg-[#faf9f6] text-zinc-900 font-sans min-h-screen">
       {/* ==================== HEADER ==================== */}
@@ -22,13 +24,14 @@ const Techniques = () => {
       <div className="max-w-6xl mx-auto px-6 pb-20">
         <div className="grid md:grid-cols-2 gap-8">
           
-          {/* Technique 1 */}
+          {/* Technique 1 - Watercolor */}
           <div className="bg-white border border-zinc-100 shadow-sm overflow-hidden group">
             <div className="h-80 bg-stone-200 relative">
               <img 
-                src="https://via.placeholder.com/800x600/ddd/666?text=Watercolor+Technique" 
-                alt="Watercolor" 
+                src="https://picsum.photos/id/1015/800/600" 
+                alt="Watercolor Technique" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onError={(e) => e.target.src = "https://picsum.photos/id/1015/800/600"}
               />
               <div className="absolute top-6 left-6 bg-white px-4 py-1 text-sm font-medium">Watercolor</div>
             </div>
@@ -43,13 +46,14 @@ const Techniques = () => {
             </div>
           </div>
 
-          {/* Technique 2 */}
+          {/* Technique 2 - Pen & Ink */}
           <div className="bg-white border border-zinc-100 shadow-sm overflow-hidden group">
             <div className="h-80 bg-stone-200 relative">
               <img 
-                src="https://via.placeholder.com/800x600/ddd/666?text=Ink+Drawing" 
+                src="https://picsum.photos/id/133/800/600" 
                 alt="Ink Drawing" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onError={(e) => e.target.src = "https://picsum.photos/id/133/800/600"}
               />
               <div className="absolute top-6 left-6 bg-white px-4 py-1 text-sm font-medium">Pen &amp; Ink</div>
             </div>
@@ -64,13 +68,14 @@ const Techniques = () => {
             </div>
           </div>
 
-          {/* Technique 3 */}
+          {/* Technique 3 - Calligraphy */}
           <div className="bg-white border border-zinc-100 shadow-sm overflow-hidden group">
             <div className="h-80 bg-stone-200 relative">
               <img 
-                src="https://via.placeholder.com/800x600/ddd/666?text=Calligraphy" 
+                src="https://picsum.photos/id/201/800/600" 
                 alt="Calligraphy" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onError={(e) => e.target.src = "https://picsum.photos/id/201/800/600"}
               />
               <div className="absolute top-6 left-6 bg-white px-4 py-1 text-sm font-medium">Calligraphy</div>
             </div>
@@ -85,13 +90,14 @@ const Techniques = () => {
             </div>
           </div>
 
-          {/* Technique 4 */}
+          {/* Technique 4 - Acrylic Pouring */}
           <div className="bg-white border border-zinc-100 shadow-sm overflow-hidden group">
             <div className="h-80 bg-stone-200 relative">
               <img 
-                src="https://via.placeholder.com/800x600/ddd/666?text=Acrylic+Pouring" 
-                alt="Acrylic" 
+                src="https://picsum.photos/id/106/800/600" 
+                alt="Acrylic Pouring" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onError={(e) => e.target.src = "https://picsum.photos/id/106/800/600"}
               />
               <div className="absolute top-6 left-6 bg-white px-4 py-1 text-sm font-medium">Acrylic</div>
             </div>
@@ -116,7 +122,7 @@ const Techniques = () => {
             Join our monthly workshops and live demonstrations
           </p>
           <button 
-            onClick={() => window.open(`https://wa.me/${'94771234567'}?text=I'm%20interested%20in%20your%20art%20techniques%20workshops`, '_blank')}
+            onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=I'm%20interested%20in%20your%20art%20techniques%20workshops`, '_blank')}
             className="bg-zinc-900 hover:bg-black text-white px-10 py-4 rounded font-medium transition-colors"
           >
             Inquire About Workshops

@@ -13,13 +13,13 @@ const Pigments = () => {
   // Subcategory IDs for Pigments (Category 4)
   const SUBCATEGORY_IDS = {
     ALL: "all",
-    WATERCOLOR: 16,
-    ACRYLIC: 17,
-    OIL: 18,
-    NATURAL_EARTH: 19,
-    METALLIC: 20,
-    MICA: 21,
-    FLUORESCENT: 22,
+    WATERCOLOR: 17,
+    ACRYLIC: 18,
+    OIL: 19,
+    NATURAL_EARTH: 20,
+    METALLIC: 21,
+    MICA: 22,
+    FLUORESCENT: 23,
   };
 
   const fetchPigments = async () => {

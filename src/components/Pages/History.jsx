@@ -24,7 +24,6 @@ const OurHistory = () => {
           <p className="text-2xl font-serif italic text-zinc-800 mb-12">
             What began as a small family workshop in 1998 has grown into one of Sri Lanka’s most trusted names in artist materials.
           </p>
-
           <div className="space-y-16">
             {/* 1998 */}
             <div className="grid md:grid-cols-12 gap-8 items-center">
@@ -100,23 +99,41 @@ const OurHistory = () => {
           <h2 className="text-center text-4xl md:text-5xl font-serif italic mb-16">
             Our Values
           </h2>
-
           <div className="grid md:grid-cols-3 gap-10">
+
+            {/* Craftsmanship */}
             <div className="text-center">
-              <div className="text-5xl mb-4">🖌️</div>
+              <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+              </div>
               <h3 className="font-medium text-xl mb-3">Craftsmanship</h3>
               <p className="text-zinc-600">Every product is chosen with care and respect for traditional methods.</p>
             </div>
+
+            {/* Authenticity */}
             <div className="text-center">
-              <div className="text-5xl mb-4">🌍</div>
+              <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2" />
+                </svg>
+              </div>
               <h3 className="font-medium text-xl mb-3">Authenticity</h3>
               <p className="text-zinc-600">We bring only the finest materials from around the world and support local makers.</p>
             </div>
+
+            {/* Community */}
             <div className="text-center">
-              <div className="text-5xl mb-4">❤️</div>
+              <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 01-5.356-1.857M17 20H7m5-2v-2c0-.656-.126-1.284-.356-1.852M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.284.356-1.852m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
               <h3 className="font-medium text-xl mb-3">Community</h3>
               <p className="text-zinc-600">Supporting artists, art schools, and creative minds across Sri Lanka.</p>
             </div>
+
           </div>
         </div>
       </section>

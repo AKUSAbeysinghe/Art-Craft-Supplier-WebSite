@@ -17,6 +17,11 @@ import Paperspage from "./components/Pages/Papers.jsx";
 import Pens from "./components/Pages/Pens.jsx";
 import ArchivePage from "./components/Pages/Archive.jsx";
 
+import History from "./components/Pages/History.jsx";
+import PigmentMap from "./components/Pages/Pigment Map.jsx";
+import Studio from "./components/Pages/Studio Basics.jsx";
+import Techniques from "./components/Pages/Techniques.jsx";
+
 
 // Admin Pages
 import Login from "./Admin/Login.jsx";
@@ -130,6 +135,47 @@ function App() {
           element={
             <Layout>
               <ArchivePage />
+            </Layout>
+          }
+        />
+
+      <Route
+          path="/history"
+          element={
+            <Layout>
+              <History />
+            </Layout>
+          }
+        />
+      
+      <Route
+          path="/pigment-map"
+          element={
+            <Layout>
+              <PigmentMap />
+            </Layout>
+          }
+        />
+
+
+
+
+        <Route
+          path="/studio-basics"
+          element={
+            <Layout>
+              <Studio />
+            </Layout>
+          }
+        />
+
+
+
+           <Route
+          path="/techniques"
+          element={
+            <Layout>
+              <Techniques />
             </Layout>
           }
         />
