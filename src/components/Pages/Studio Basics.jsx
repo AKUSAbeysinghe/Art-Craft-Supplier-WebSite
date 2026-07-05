@@ -1,9 +1,16 @@
 import React from "react";
+import Stu1 from "../../assets/studio/1.jpg";
+import Stu2 from "../../assets/studio/2.jpg";
+import Stu3 from "../../assets/studio/3.jpg";
+import Stu4 from "../../assets/studio/4.jpg";
+import Stu5 from "../../assets/studio/5.jpg";
+import Stu6 from "../../assets/studio/6.jpg";
+import EndBanner from "../../assets/studio/end.jpg";
 
 const StudioBasics = () => {
   const WHATSAPP_NUMBER = '94771234567';
 
-  // Hardcoded Studio Basics Products - Art Site Theme
+  // Hardcoded Studio Basics Products
   const products = [
     {
       id: 1,
@@ -12,7 +19,7 @@ const StudioBasics = () => {
       price: 2450,
       stock: 24,
       description: "Set of 12 high-quality synthetic brushes perfect for watercolor, acrylic, and gouache painting.",
-      image_url: "https://picsum.photos/id/1015/600/800",
+      image: Stu1,
       popular: "1"
     },
     {
@@ -22,7 +29,7 @@ const StudioBasics = () => {
       price: 1850,
       stock: 42,
       description: "100% cotton 300gsm watercolor paper. Excellent for wet techniques and holds color beautifully.",
-      image_url: "https://picsum.photos/id/133/600/800",
+      image: Stu2,
       popular: "1"
     },
     {
@@ -32,7 +39,7 @@ const StudioBasics = () => {
       price: 3250,
       stock: 18,
       description: "12 vibrant colors in 12ml tubes. Rich pigmentation and smooth consistency ideal for beginners.",
-      image_url: "https://picsum.photos/id/106/600/800",
+      image: Stu3,
       popular: "1"
     },
     {
@@ -42,7 +49,7 @@ const StudioBasics = () => {
       price: 1250,
       stock: 35,
       description: "A5 landscape sketchbook with 100 pages. Perfect for daily sketching and mixed media.",
-      image_url: "https://picsum.photos/id/201/600/800",
+      image: Stu4,
       popular: "0"
     },
     {
@@ -52,7 +59,7 @@ const StudioBasics = () => {
       price: 1650,
       stock: 27,
       description: "Complete charcoal set including sticks, pencils, kneaded eraser and blending stumps.",
-      image_url: "https://picsum.photos/id/251/600/800",
+      image: Stu5,
       popular: "1"
     },
     {
@@ -62,7 +69,7 @@ const StudioBasics = () => {
       price: 980,
       stock: 31,
       description: "Stainless steel palette knives for oil and acrylic painting. Different shapes for texture work.",
-      image_url: "https://picsum.photos/id/1074/600/800",
+      image: Stu6,
       popular: "0"
     }
   ];
@@ -101,14 +108,14 @@ const StudioBasics = () => {
                 key={item.id}
                 className="bg-white border border-zinc-100 shadow-sm overflow-hidden group hover:shadow-xl transition-all duration-300"
               >
-                {/* Image */}
+                {/* Image - FIXED */}
                 <div className="relative h-80 bg-stone-100 overflow-hidden">
                   <img
-                    src={item.image_url}
+                    src={item.image}           // ← Fixed: Using local import
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
-                      e.target.src = "https://picsum.photos/id/1015/600/800";
+                      e.target.src = "https://via.placeholder.com/600x400?text=Studio+Item";
                     }}
                   />
                   {item.popular === "1" && (
@@ -163,7 +170,7 @@ const StudioBasics = () => {
         <div className="bg-[#eae8e4] p-4 sm:p-6 md:p-8 rounded-sm shadow-sm">
           <div className="overflow-hidden rounded-sm bg-stone-100">
             <img
-              src="https://picsum.photos/id/1015/1200/620"
+              src={EndBanner}
               alt="Artist studio setup with basics"
               className="w-full h-auto object-cover max-h-[620px] transition-transform duration-500 hover:scale-[1.02]"
             />

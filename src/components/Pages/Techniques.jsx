@@ -1,4 +1,10 @@
 import React from "react";
+import Tech1 from "../../assets/Techniques/1.jpg";
+import Tech2 from "../../assets/Techniques/2.jpg";
+import Tech3 from "../../assets/Techniques/3.jpg";
+import Tech4 from "../../assets/Techniques/4.jpg";
+
+
 
 const Techniques = () => {
   const WHATSAPP_NUMBER = '94771234567';
@@ -28,7 +34,7 @@ const Techniques = () => {
           <div className="bg-white border border-zinc-100 shadow-sm overflow-hidden group">
             <div className="h-80 bg-stone-200 relative">
               <img 
-                src="https://picsum.photos/id/1015/800/600" 
+                src={Tech1}
                 alt="Watercolor Technique" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => e.target.src = "https://picsum.photos/id/1015/800/600"}
@@ -50,7 +56,7 @@ const Techniques = () => {
           <div className="bg-white border border-zinc-100 shadow-sm overflow-hidden group">
             <div className="h-80 bg-stone-200 relative">
               <img 
-                src="https://picsum.photos/id/133/800/600" 
+                src={Tech2}
                 alt="Ink Drawing" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => e.target.src = "https://picsum.photos/id/133/800/600"}
@@ -72,7 +78,7 @@ const Techniques = () => {
           <div className="bg-white border border-zinc-100 shadow-sm overflow-hidden group">
             <div className="h-80 bg-stone-200 relative">
               <img 
-                src="https://picsum.photos/id/201/800/600" 
+                src={Tech3}
                 alt="Calligraphy" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => e.target.src = "https://picsum.photos/id/201/800/600"}
@@ -94,7 +100,7 @@ const Techniques = () => {
           <div className="bg-white border border-zinc-100 shadow-sm overflow-hidden group">
             <div className="h-80 bg-stone-200 relative">
               <img 
-                src="https://picsum.photos/id/106/800/600" 
+                src={Tech4}
                 alt="Acrylic Pouring" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => e.target.src = "https://picsum.photos/id/106/800/600"}
