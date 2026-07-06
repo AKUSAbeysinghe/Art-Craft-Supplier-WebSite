@@ -68,7 +68,7 @@
 
 
 import React from 'react';
-import MainBannerImage from "../assets/Mains/paint.jpg";
+import MainBannerImage from "../assets/Mains/Banner.jpg";
 
 export default function AtelierDrawerSection() {
   return (

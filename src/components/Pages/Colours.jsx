@@ -1,4 +1,5 @@
 import React from 'react';
+import Banner from "../../assets/Mains/BannerPic.jpg";
 
 const PigmentCollectionPage = () => {
   const allPigments = [
@@ -94,7 +95,7 @@ const PigmentCollectionPage = () => {
     description: 'Twelve finely graded professional drawing pencils housed in a vintage-inspired weathered tin case.',
     price: '$64.00',
     quantity: '12 Pieces',
-    imageUrl: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop'
+    imageUrl: Banner,        // ← Fixed here
   };
 
   return (
