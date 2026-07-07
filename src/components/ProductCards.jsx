@@ -10,7 +10,7 @@ export default function ProductCollection() {
       refCode: 'REF. 0922-G',
       title: 'Graphite Set No. 4',
       category: 'Drawing & Sketching',
-      price: '$42.00',
+      price: 'Rs.2000.00',
       imageSrc: Pencill, // Replace with your actual image path
       rotationClass: '-rotate-2 hover:rotate-0',
     },
@@ -19,7 +19,7 @@ export default function ProductCollection() {
       refCode: 'REF. 1102-B',
       title: 'Flat Hake Brush',
       category: 'Wash Techniques',
-      price: '$18.50',
+      price: 'Rs.1500.00',
       imageSrc: Brush, // Replace with your actual image path
       rotationClass: 'rotate-1 hover:rotate-0',
     },
@@ -28,7 +28,7 @@ export default function ProductCollection() {
       refCode: 'REF. 0045-P',
       title: 'Cotton Rag Paper',
       category: 'Surfaces',
-      price: '$34.00',
+      price: 'Rs.34.00',
       imageSrc: Paper, // Replace with your actual image path
       rotationClass: '-rotate-1 lg:rotate-2 hover:rotate-0',
     },
